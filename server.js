@@ -9,6 +9,11 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
+// Serve the home page from the root directory
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
 app.post('/submit', (req, res) => {
     const { phone, pin } = req.body;
 
